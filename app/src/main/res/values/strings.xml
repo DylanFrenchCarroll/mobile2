@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">Fantasy Football</string>
+  <string name="button_addTeam">Create Team</string>
+  <string name="hint_teamName">Team Name</string>
+</resources>
