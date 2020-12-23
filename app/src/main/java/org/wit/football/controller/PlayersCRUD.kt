@@ -9,7 +9,7 @@ import JsonHelper
 import org.wit.football.models.PlayerModel
 
 
-val jsonHelper = JsonHelper();
+val playerJsonHelper = JsonHelper();
 
 val players = JSONStore()
 
