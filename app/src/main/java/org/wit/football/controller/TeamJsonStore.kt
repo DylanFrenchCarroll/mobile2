@@ -1,12 +1,16 @@
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.placemark.app.models.TeamModel
+import java.nio.file.Files.exists
 import java.util.*
 
 
-val teamJsonHelper = JsonHelper();
+
 var TEAM_JSON_FILE = "teams.json"
 var teamGsonBuilder = GsonBuilder().setPrettyPrinting().create()
 var teamListType = object : TypeToken<java.util.ArrayList<TeamModel>>() {}.type
@@ -15,16 +19,17 @@ fun teamGenerateRandomId(): Int {
     return Random().nextInt()
 }
 
-class TeamJsonStore  {
+class TeamJsonStore : AnkoLogger {
 
     var teams = mutableListOf<TeamModel>()
+    val context: Context
 
-    init {
-        if (teamJsonHelper.exists(TEAM_JSON_FILE)) {
+
+
+    constructor (context: Context) {
+        this.context = context
+        if (exists(context, TEAM_JSON_FILE)) {
             teamDeserialize()
-        }
-        else{
-            println("no reading")
         }
     }
 
@@ -64,11 +69,12 @@ class TeamJsonStore  {
 
     private fun teamSerialize() {
         val jsonString = teamGsonBuilder.toJson(teams, teamListType)
-        teamJsonHelper.write(JSON_FILE, jsonString)
+        info("JSONSTRING: " + jsonString)
+       write(context,TEAM_JSON_FILE, jsonString)
     }
 
     private fun teamDeserialize() {
-        val jsonString = teamJsonHelper.read(JSON_FILE)
+        val jsonString = read(context, TEAM_JSON_FILE)
         teams = Gson().fromJson(jsonString, teamListType)
 
     }
