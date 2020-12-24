@@ -1,6 +1,7 @@
 package org.wit.football.activities
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_fantasy.*
@@ -20,19 +21,16 @@ class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_fantasy)
 
-    btnAdd.setOnClickListener() {
-      info("Add Button Pressed:")
-//      team.name = teamName.text.toString()
-//      if (team.name.isNotEmpty()) {
-//        teams.add(team)
-//        info("Add Button Pressed: $team.name")
-//        for (i in teams.indices) {
-//          info("Team[$i]:${this.teams[i]}")
-//        }
-//      }
-//      else {
-//        toast ("Please Enter a name")
-//      }
+
+    btnListTeamsMenu.setOnClickListener() {
+      info("List Button Pressed:")
+
     }
+
+    btnCreateTeamMenu.setOnClickListener() {
+      info("Create Button Pressed:")
+      startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
+    }
+
   }
 }

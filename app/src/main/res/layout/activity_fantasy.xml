@@ -40,22 +40,35 @@
           android:layout_height="wrap_content"
           android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/teamName"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="8dp"
-            android:autofillHints=""
-            android:hint="@string/hint_teamName"
-            android:inputType="text"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
+<!--        <EditText-->
+<!--            android:id="@+id/teamName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:autofillHints=""-->
+<!--            android:hint="@string/hint_teamName"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLength="25"-->
+<!--            android:maxLines="1"-->
+<!--            android:padding="8dp"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            android:textSize="14sp" />-->
 
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnListTeamsMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorAccent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:stateListAnimator="@null"
+            android:text="@string/button_listTeam"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnCreateTeamMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -66,7 +79,6 @@
             android:text="@string/button_addTeam"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
-
 
       </LinearLayout>
     </ScrollView>

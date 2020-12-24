@@ -1,0 +1,29 @@
+package org.wit.football.activities
+
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_create_team.*
+import kotlinx.android.synthetic.main.activity_fantasy.*
+
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
+import org.jetbrains.anko.toast
+import org.wit.football.R
+import org.wit.placemark.app.models.TeamModel
+
+class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
+
+//  var team  = TeamModel()
+//  val teams = ArrayList<TeamModel>();
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_create_team)
+
+        btn_createATeam.setOnClickListener() {
+            info("Create Button Pressed:")
+        }
+    }
+}
