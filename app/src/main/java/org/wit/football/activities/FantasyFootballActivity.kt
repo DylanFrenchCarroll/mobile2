@@ -1,6 +1,7 @@
 package org.wit.football.activities
 
 
+import TeamJsonStore
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,23 +15,25 @@ import org.wit.placemark.app.models.TeamModel
 
 class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
 
-//  var team  = TeamModel()
-//  val teams = ArrayList<TeamModel>();
-
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_fantasy)
+    //  var team  = TeamModel()
 
 
-    btnListTeamsMenu.setOnClickListener() {
-      info("List Button Pressed:")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_fantasy)
+
+
+        btnListTeamsMenu.setOnClickListener() {
+            info("List Button Pressed:")
+            startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
+        }
+
+        btnCreateTeamMenu.setOnClickListener() {
+            info("Create Button Pressed:")
+
+            startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
+        }
 
     }
-
-    btnCreateTeamMenu.setOnClickListener() {
-      info("Create Button Pressed:")
-      startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
-    }
-
-  }
 }

@@ -28,6 +28,9 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
         setContentView(R.layout.activity_create_team)
         val context = getApplicationContext();
         val TeamOperations = TeamJsonStore(context)
+
+
+
         btn_createATeam.setOnClickListener() {
             info("Create Button Pressed:")
             team.name = teamName.text.toString()
