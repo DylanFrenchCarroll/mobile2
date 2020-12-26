@@ -31,7 +31,6 @@ class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
 
         btnCreateTeamMenu.setOnClickListener() {
             info("Create Button Pressed:")
-
             startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
         }
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.football.R
 import org.wit.placemark.app.models.TeamModel
 import java.lang.String
@@ -17,11 +19,13 @@ interface TeamListener {
 }
 
 
-class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
-    RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>() {
+class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), AnkoLogger {
 
-    //we are storing all the products in a list
-    private lateinit var teamList: List<TeamModel>
+
+
+
+    private var teamList: List<TeamModel>
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
         //inflating and returning our view holder
         val inflater = LayoutInflater.from(mCtx)
@@ -30,11 +34,17 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
     }
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
-        //getting the product of the specified position
-        val team: TeamModel = teamList[position]
 
-        //binding the data with the viewholder views
+
+
+        val team: TeamModel = teamList[position]
+        lateinit var listener: TeamListener
         holder.textViewName.setText(team.name)
+        holder.itemView.setOnClickListener {
+           info(team)
+            //Open new activity to edit team here
+        }
+
 
     }
 
@@ -42,18 +52,24 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
         return teamList.size
     }
 
-    inner class TeamViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-        lateinit var textViewName: TextView
-
+    inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var textViewName: TextView
 
         init {
             textViewName = itemView.findViewById(R.id.teamName)
+        }
 
+        fun bind(team: TeamModel, listener: TeamListener) {
+            itemView.setOnClickListener { listener.onTeamClick(team) }
         }
     }
 
-    //getting the context and product list with constructor
+
+
+
+
+
+
     init {
         this.teamList = teamList
     }
