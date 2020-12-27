@@ -3,8 +3,10 @@
     <string name="button_addTeam">Create Team</string>
     <string name="button_listTeam">Show Teams</string>
     <string name="hint_teamName">Team Name</string>
-    <string name="edit_team">Change Team Name</string>
+    <string name="edit_team">Change Name</string>
     <string name="squad_list">Squad List</string>
     <string name="edit_squad">Change Squad</string>
     <string name="delete_squad">Delete Squad</string>
+    <string name="go_back">Go Back</string>
+    <string name="app_title">Fantasy 5 A Side</string>
 </resources>

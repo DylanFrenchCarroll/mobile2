@@ -24,11 +24,17 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger {
         TeamOperations = TeamJsonStore(context)
 
         //Getting Team from intent
-        val intentTeam: TeamModel? = intent.getSerializableExtra("myTeam") as TeamModel?
+        val intentTeam: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
         var  textViewTeamName = findViewById(R.id.editTeamName) as TextView
         if (intentTeam != null) {
             textViewTeamName.setText(intentTeam.name)
         }
+
+        btn_editTeamName.setOnClickListener() {
+            info("Change Name Pressed:")
+            TeamOperations.teamUpdateName(intentTeam, textViewTeamName.text.toString() )
+        }
+
 
         btn_deleteSquad.setOnClickListener() {
             info("Delete Button Pressed:")
@@ -38,6 +44,13 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger {
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i)
             }
+        }
+
+        btn_editGoBack.setOnClickListener(){
+            info("Go Back")
+            var i = Intent(context, ListTeamsActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
         }
 
     }

@@ -45,14 +45,17 @@ class TeamJsonStore : AnkoLogger {
         teams.add(team)
         teamSerialize()
     }
+
     fun teamValidateSize(team: TeamModel): Int {
         return teams.size
     }
 
-    fun teamUpdate(team: TeamModel, newTeam: TeamModel) {
-        var foundPlayer = teamFindOne(team.name)
-        if (foundPlayer != null) {
-            teamDelete(team)
+    fun teamUpdateName(oldTeam: TeamModel, newTeamName: String) {
+        var foundTeam = teamFindOne(oldTeam.name)
+
+        if (foundTeam != null) {
+            teamDelete(oldTeam)
+            var newTeam = TeamModel(newTeamName, oldTeam.players)
             teamCreate(newTeam)
         }
         teamSerialize()
@@ -64,10 +67,6 @@ class TeamJsonStore : AnkoLogger {
         teamSerialize()
     }
 
-
-//    internal fun teamLogAll() {
-//      teams.forEach{logger.info(it.toString())}
-//    }
 
     private fun teamSerialize() {
         val jsonString = teamGsonBuilder.toJson(teams, teamListType)

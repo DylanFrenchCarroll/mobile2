@@ -2,11 +2,15 @@ package org.wit.football.activities
 
 import TeamJsonStore
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_edit_team_layout.*
+import kotlinx.android.synthetic.main.activity_list_teams.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.football.R
 import org.wit.football.adapters.TeamAdapter
 import org.wit.football.models.PlayerModel
@@ -44,7 +48,12 @@ class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
         }
 
 
-
+        btn_listGoBack.setOnClickListener(){
+            info("Go Back")
+            var i = Intent(context, FantasyFootballActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
+        }
 
 
     }
