@@ -44,7 +44,7 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
     }
 
 
-
+ 
     inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textViewName: TextView
         init {
