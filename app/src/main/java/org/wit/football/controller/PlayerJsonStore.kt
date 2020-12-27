@@ -5,7 +5,6 @@ import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.models.PlayerModel
-import org.wit.placemark.app.models.TeamModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -47,8 +46,13 @@ class PlayerJsonStore : AnkoLogger {
     }
 
     fun playerFindOne(name: String): PlayerModel? {
+
         var foundPlayer = players.find { p -> p.name == name }
-        return foundPlayer
+        if(foundPlayer != null){
+            return foundPlayer
+        }else return null
+
+
     }
 
 

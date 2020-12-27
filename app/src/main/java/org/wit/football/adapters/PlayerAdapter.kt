@@ -1,7 +1,9 @@
 package org.wit.football.adapters
 
+import PlayerJsonStore
+import TeamJsonStore
 import android.content.Context
-import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,53 +12,77 @@ import androidx.recyclerview.widget.RecyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.R
-import org.wit.football.activities.EditTeamActivity
 import org.wit.football.models.PlayerModel
 import org.wit.placemark.app.models.TeamModel
 import java.io.Serializable
 
 
-class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>) :
-    RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder?>(), AnkoLogger {
+class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, team: TeamModel) :
+    RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder?>(), Serializable, AnkoLogger {
+
+    var PlayerOperations = PlayerJsonStore(mCtx)
+    var TeamOperations = TeamJsonStore(mCtx)
+    private var playerList: List<PlayerModel>
+    var team = team
+    var squadList: ArrayList<PlayerModel> = ArrayList()
 
 
-    private lateinit var playerList: List<PlayerModel>
+    init {
+        this.playerList = playerList //passed list as parameter
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
-
         val inflater = LayoutInflater.from(mCtx)
         val view: View = inflater.inflate(R.layout.card_player, null)
         return PlayerViewHolder(view)
+
     }
 
-     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player: PlayerModel = playerList[position]
         holder.playerTextViewName.setText(player.name)
+//         for (player1 in team1.players){
+//             if(PlayerOperations.playerFindOne(player1.name) != null){
+//                    info(player1.name)
+//             } };
+
         holder.itemView.setOnClickListener {
-            info("HERE" + player)
-//            var i = Intent(mCtx, EditTeamActivity::class.java)
-//            i.putExtra("myTeam", team)
-//            mCtx.startActivity(i)
+            info("Player Selected" + player)
+            player.setPlayerSelected(!player.isPlayerSelected());
+            if (player.isPlayerSelected()) {
+
+                holder.itemView.setBackgroundColor(Color.CYAN)
+                squadList.add(player)
+            } else {
+                holder.itemView.setBackgroundColor(Color.WHITE)
+                squadList.remove(player)
+            }
+
         }
     }
+
+    inner class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), AnkoLogger {
+        var playerTextViewName: TextView
+
+        init {
+            playerTextViewName = itemView.findViewById(R.id.playerName)
+        }
+
+    }
+
+
+
+
 
     override fun getItemCount(): Int {
         return playerList.size
     }
 
-
-
-    inner class PlayerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var playerTextViewName: TextView
-        init {
-            playerTextViewName = itemView.findViewById(R.id.playerName)
-        }
+    fun getNewSquad(): ArrayList<PlayerModel> {
+        return squadList
     }
 
 
-    init {
-        this.playerList = playerList
-    }
 
 
 }

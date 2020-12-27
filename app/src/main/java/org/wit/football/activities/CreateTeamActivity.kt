@@ -21,14 +21,15 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
 
     val teams = ArrayList<TeamModel>();
     val players = ArrayList<PlayerModel>();
-    var team = TeamModel("EmptyName", players)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_team)
         val context = getApplicationContext();
         val TeamOperations = TeamJsonStore(context)
-
+        val id = TeamOperations.teamGenerateRandomId()
+        var team = TeamModel(id,"EmptyName", players)
 
 
         btn_createATeam.setOnClickListener() {

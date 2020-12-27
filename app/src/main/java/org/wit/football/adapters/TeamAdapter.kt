@@ -15,8 +15,7 @@ import org.wit.placemark.app.models.TeamModel
 import java.io.Serializable
 
 
-class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
-    RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), AnkoLogger {
+class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), Serializable ,AnkoLogger {
 
 
     private var teamList: List<TeamModel>
@@ -35,6 +34,8 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
             info("HERE" + team)
             var i = Intent(mCtx, EditTeamActivity::class.java)
             i.putExtra("myTeam", team)
+            val case = "TeamList"
+            i.putExtra("case", case)
             mCtx.startActivity(i)
         }
     }

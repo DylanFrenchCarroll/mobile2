@@ -15,8 +15,9 @@ import org.wit.football.R
 import org.wit.football.adapters.TeamAdapter
 import org.wit.football.models.PlayerModel
 import org.wit.placemark.app.models.TeamModel
+import java.io.Serializable
 
-class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
+class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
 
     lateinit var teamList: List<TeamModel>
     lateinit var context: Context
@@ -37,7 +38,7 @@ class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
 
         if(teamList.size ==0 ){
             var emptyPlayerList: ArrayList<PlayerModel> = ArrayList()
-            val emptyTeam = TeamModel("No Squads Available(Please dont click me, I'm a bug)", emptyPlayerList)
+            val emptyTeam = TeamModel(0, "No Squads Available(Please dont click me, I'm a bug)", emptyPlayerList)
             val empty = mutableListOf<TeamModel>()
             empty.add(emptyTeam)
             val adapter = TeamAdapter(this, empty  )
@@ -51,6 +52,7 @@ class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
         btn_listGoBack.setOnClickListener(){
             info("Go Back")
             var i = Intent(context, FantasyFootballActivity::class.java)
+
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
         }
