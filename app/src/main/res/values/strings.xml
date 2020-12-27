@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Fantasy Football</string>
     <string name="button_addTeam">Create Team</string>
-    <string name="button_listTeam">List Team</string>
+    <string name="button_listTeam">Show Teams</string>
     <string name="hint_teamName">Team Name</string>
     <string name="edit_team">Change Team Name</string>
     <string name="squad_list">Squad List</string>
     <string name="edit_squad">Change Squad</string>
+    <string name="delete_squad">Delete Squad</string>
 </resources>

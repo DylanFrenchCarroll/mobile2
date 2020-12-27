@@ -38,6 +38,12 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
             TeamOperations.teamCreate(team)
             info("Team Added")
 
+
+            var i = Intent(context, EditTeamActivity::class.java)
+            i.putExtra("myTeam", team)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
+
         }
     }
 }

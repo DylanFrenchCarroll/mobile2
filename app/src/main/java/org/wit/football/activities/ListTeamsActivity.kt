@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.wit.football.R
 import org.wit.football.adapters.TeamAdapter
+import org.wit.football.models.PlayerModel
 import org.wit.placemark.app.models.TeamModel
 
 class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
@@ -30,8 +31,20 @@ class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = TeamAdapter(this, teamList)
-        recyclerView.adapter = adapter
+        if(teamList.size ==0 ){
+            var emptyPlayerList: ArrayList<PlayerModel> = ArrayList()
+            val emptyTeam = TeamModel("No Squads Available(Please dont click me, I'm a bug)", emptyPlayerList)
+            val empty = mutableListOf<TeamModel>()
+            empty.add(emptyTeam)
+            val adapter = TeamAdapter(this, empty  )
+            recyclerView.adapter = adapter
+        }else{
+            val adapter = TeamAdapter(this, teamList)
+            recyclerView.adapter = adapter
+        }
+
+
+
 
 
     }
