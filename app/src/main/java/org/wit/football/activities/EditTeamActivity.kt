@@ -48,10 +48,11 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
             if (updatedPlayers != null) {
                 info("Updating Team'##################################")
                 TeamOperations.teamUpdatePlayers(intentTeam, updatedPlayers)
+                team.players = updatedPlayers
             }
         }
 
-
+        info("CURRENT TEAM BEING EDITED: " + team )
         btn_editTeamName.setOnClickListener() {
             info("Change Name Pressed:")
             TeamOperations.teamUpdateName(intentTeam, textViewTeamName.text.toString())

@@ -46,7 +46,9 @@ class TeamJsonStore : AnkoLogger {
     }
 
     fun teamCreate(team: TeamModel) {
+        info("creating team name: " + team.name + " and id: " + team.id)
         teams.add(team)
+        info("addedTeam#################")
         teamSerialize()
     }
 
@@ -78,9 +80,10 @@ class TeamJsonStore : AnkoLogger {
 
 
     fun teamDelete(team: TeamModel) {
+        info("DELETING team name: " + team.name + " and id: " + team.id)
         teams.remove(team)
-        info("deleting team: " + team.name)
-        info(teams)
+        info("Current Team List Here: " + teams)
+        info("WRITING TO JSON")
         teamSerialize()
     }
 

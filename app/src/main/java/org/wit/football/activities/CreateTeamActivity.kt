@@ -42,6 +42,8 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
 
             var i = Intent(context, EditTeamActivity::class.java)
             i.putExtra("myTeam", team)
+            val case: String = "CreateList"
+            i.putExtra("case", case)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
 
