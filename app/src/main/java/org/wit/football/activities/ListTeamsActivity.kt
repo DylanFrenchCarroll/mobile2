@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
 import org.wit.football.R
+import org.wit.football.adapters.TeamAdapter
 import org.wit.placemark.app.models.TeamModel
 
 class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
@@ -32,13 +31,7 @@ class ListTeamsActivity : AppCompatActivity(), AnkoLogger {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val adapter = TeamAdapter(this, teamList)
-
         recyclerView.adapter = adapter
-
-        fun onTeamClick(team: TeamModel) {
-            info("click")
-//            startActivityForResult(intentFor<EditTeamActivity>().putExtra("placemark_edit", team), 0)
-        }
 
 
     }

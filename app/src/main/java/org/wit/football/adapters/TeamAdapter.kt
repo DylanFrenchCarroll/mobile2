@@ -1,17 +1,18 @@
-package org.wit.football.activities
+package org.wit.football.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.R
+import org.wit.football.activities.EditTeamActivity
 import org.wit.placemark.app.models.TeamModel
-import java.lang.String
+import java.io.Serializable
 
 
 interface TeamListener {
@@ -35,14 +36,14 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : Recycl
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
 
-
-
         val team: TeamModel = teamList[position]
         lateinit var listener: TeamListener
         holder.textViewName.setText(team.name)
         holder.itemView.setOnClickListener {
            info(team)
-            //Open new activity to edit team here
+            var i = Intent(mCtx, EditTeamActivity::class.java)
+            i.putExtra("myTeam", team)
+            mCtx.startActivity(i)
         }
 
 
