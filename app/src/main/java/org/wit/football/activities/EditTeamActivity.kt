@@ -46,6 +46,13 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger {
             }
         }
 
+        btn_editSquad.setOnClickListener(){
+            info("Change Squad!")
+            var i = Intent(context, ListPlayersActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
+        }
+
         btn_editGoBack.setOnClickListener(){
             info("Go Back")
             var i = Intent(context, ListTeamsActivity::class.java)

@@ -66,6 +66,19 @@
 
 
         <Button
+            android:id="@+id/btn_deleteSquad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorAccent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:stateListAnimator="@null"
+            android:text="@string/delete_squad"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <Button
             android:id="@+id/btn_editSquad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,32 +91,14 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/squadList"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="8dp"
-            android:autofillHints=""
-            android:hint="@string/edit_squad"
-            android:inputType="text"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_deleteSquad"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/playerRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/colorAccent"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:stateListAnimator="@null"
-            android:text="@string/delete_squad"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
 
 
     </LinearLayout>
