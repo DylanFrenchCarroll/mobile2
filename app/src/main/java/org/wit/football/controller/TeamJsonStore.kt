@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.placemark.app.models.TeamModel
-import java.nio.file.Files.exists
 import java.util.*
 
 
@@ -46,6 +45,9 @@ class TeamJsonStore : AnkoLogger {
         teams.add(team)
         teamSerialize()
     }
+    fun teamValidateSize(team: TeamModel): Int {
+        return teams.size
+    }
 
     fun teamUpdate(team: TeamModel, newTeam: TeamModel) {
         var foundPlayer = teamFindOne(team.name)
@@ -70,7 +72,7 @@ class TeamJsonStore : AnkoLogger {
     private fun teamSerialize() {
         val jsonString = teamGsonBuilder.toJson(teams, teamListType)
         info("JSONSTRING: " + jsonString)
-       write(context,TEAM_JSON_FILE, jsonString)
+        write(context,TEAM_JSON_FILE, jsonString)
     }
 
     private fun teamDeserialize() {

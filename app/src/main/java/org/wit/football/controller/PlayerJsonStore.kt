@@ -1,81 +1,66 @@
-//
-//import com.google.gson.Gson
-//import com.google.gson.GsonBuilder
-//import com.google.gson.reflect.TypeToken
-//
-//
-//
-//import org.wit.football.models.PlayerModel
-//import java.util.*
-//
-//
-//
-//
-//
-//var JSON_FILE = "teams.json"
-//var gsonBuilder = GsonBuilder().setPrettyPrinting().create()
-//var listType = object : TypeToken<java.util.ArrayList<PlayerModel>>() {}.type
-//
-//fun generateRandomId(): Int {
-//    return Random().nextInt()
-//}
-//
-//class JSONStore  {
-//
-//    var players = mutableListOf<PlayerModel>()
-//
-//    init {
-//        if (PlayerJsonHelper.exists(JSON_FILE)) {
-//            deserialize()
-//        }
-//        else{
-//            println("no reading")
-//        }
-//
-//    }
-//
-//    fun findAll(): MutableList<PlayerModel> {
-//        return players
-//    }
-//
-//    fun findOne(name: String) : PlayerModel? {
-//        var foundPlayer = players.find { p -> p.name == name }
-//        return foundPlayer
-//    }
-//
-//    fun create(player: PlayerModel) {
-//        players.add(player)
-//        serialize()
-//    }
-//
-//    fun update(player: PlayerModel, newPlayer: PlayerModel) {
-//        var foundPlayer = findOne(player.name)
-//        if (foundPlayer != null) {
-//            delete(player)
-//            create(newPlayer)
-//        }
-//        serialize()
-//    }
-//
-//
-//    fun delete(player: PlayerModel) {
-//        players.remove(player)
-//        serialize()
-//    }
-//
-//
-//    internal fun logAll() {
-////        players.forEach{logger.info(it.toString())}
-//    }
-//
-//    private fun serialize() {
-//        val jsonString = gsonBuilder.toJson(players, listType)
-//        PlayerJsonHelper.write(JSON_FILE, jsonString)
-//    }
-//
-//    private fun deserialize() {
-//        val jsonString = PlayerJsonHelper.read(JSON_FILE)
-//        players = Gson().fromJson(jsonString, listType)
-//
-//    }
-//}
+import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
+import org.wit.football.models.PlayerModel
+import org.wit.placemark.app.models.TeamModel
+import java.util.*
+import kotlin.collections.ArrayList
+
+
+var PLAYER_JSON_FILE = "players.json"
+var playerGsonBuilder = GsonBuilder().setPrettyPrinting().create()
+var playerListType = object : TypeToken<java.util.ArrayList<PlayerModel>>() {}.type
+
+fun playerGenerateRandomId(): Int {
+    return Random().nextInt()
+}
+
+class PlayerJsonStore : AnkoLogger {
+
+    var players = ArrayList<PlayerModel>()
+    val context: Context
+
+
+    constructor (context: Context) {
+        this.context = context
+        if (exists(context, PLAYER_JSON_FILE)) {
+            playerDeserialize()
+        }
+    }
+
+    fun playerCreateDB() {
+        players.add(PlayerModel("Timo Werner", 25, "Chelsea"))
+        players.add(PlayerModel("Bruno Fernandes", 25, "Manchester United"))
+        players.add(PlayerModel("Jack Grealish", 22, "Aston Villa"))
+        players.add(PlayerModel("David Luiz", 28, "Arsenal"))
+        players.add(PlayerModel("Jamie Vardy", 33, "Leicester"))
+        players.add(PlayerModel("Kevin De Bruyne", 29, "Manchester City"))
+        info("Creating DB")
+        playerSerialize()
+    }
+
+    fun playerFindAll(): ArrayList<PlayerModel> {
+        return players
+    }
+
+    fun playerFindOne(name: String): PlayerModel? {
+        var foundPlayer = players.find { p -> p.name == name }
+        return foundPlayer
+    }
+
+
+    private fun playerSerialize() {
+        val jsonString = playerGsonBuilder.toJson(players, playerListType)
+        info("JSONSTRING: " + jsonString)
+        info("Inside serialise Statement")
+        write(context, PLAYER_JSON_FILE, jsonString)
+    }
+
+    private fun playerDeserialize() {
+        val jsonString = read(context, PLAYER_JSON_FILE)
+        players = Gson().fromJson(jsonString, playerListType)
+    }
+}

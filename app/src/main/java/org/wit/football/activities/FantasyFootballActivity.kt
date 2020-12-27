@@ -1,28 +1,38 @@
 package org.wit.football.activities
 
 
-import TeamJsonStore
+import PlayerJsonStore
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import exists
 import kotlinx.android.synthetic.main.activity_fantasy.*
-
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
+import org.json.JSONException
+import org.json.JSONObject
 import org.wit.football.R
-import org.wit.placemark.app.models.TeamModel
+
 
 class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
 
-    //  var team  = TeamModel()
+
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fantasy)
+        var context: Context = getApplicationContext();
 
+        if (!exists(context, "players.json")) {
+            info("Inside If Statement")
+            var PlayerOperations: PlayerJsonStore = PlayerJsonStore(context)
+            PlayerOperations.playerCreateDB()
+
+        }
 
         btnListTeamsMenu.setOnClickListener() {
             info("List Button Pressed:")
@@ -35,4 +45,27 @@ class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
         }
 
     }
+
+
+    fun writeJSON() {
+        val `object` = JSONObject()
+        try {
+            `object`.put("name", "Jack Hack")
+            `object`.put("age", 24)
+            `object`.put("team", "Arsenal")
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        println(`object`)
+    }
+
+
+
+
+
+
+
+
+
+
 }
