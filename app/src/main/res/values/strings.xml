@@ -7,7 +7,7 @@
     <string name="squad_list">Squad List</string>
     <string name="edit_squad">Change Squad</string>
     <string name="delete_squad">Delete Squad</string>
-    <string name="go_back">Go Back</string>
+    <string name="go_back">  Back   </string>
     <string name="confirm">Confirm</string>
     <string name="app_title">Fantasy 5 A Side</string>
     <string name="title_activity_list_players">ListPlayersActivity</string>

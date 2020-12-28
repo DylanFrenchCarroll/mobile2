@@ -40,24 +40,31 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player: PlayerModel = playerList[position]
+        holder.itemView.setBackgroundColor(Color.parseColor("#30475e"))
         holder.playerTextViewName.setText(player.name)
-//         for (player1 in team1.players){
-//             if(PlayerOperations.playerFindOne(player1.name) != null){
-//                    info(player1.name)
-//             } };
+
+
+         for (player1 in team.players){
+
+             var name = player1.name as String
+             if(PlayerOperations.playerFindOne(name) != null){
+                   //means player is here
+                   // find player in
+             }
+         };
+
 
         holder.itemView.setOnClickListener {
             info("Player Selected" + player)
             player.setPlayerSelected(!player.isPlayerSelected());
             if (player.isPlayerSelected()) {
-
+                info("SELECTED")
                 holder.itemView.setBackgroundColor(Color.CYAN)
                 squadList.add(player)
             } else {
-                holder.itemView.setBackgroundColor(Color.WHITE)
+                holder.itemView.setBackgroundColor(Color.parseColor("#30475e"))
                 squadList.remove(player)
             }
-
         }
     }
 

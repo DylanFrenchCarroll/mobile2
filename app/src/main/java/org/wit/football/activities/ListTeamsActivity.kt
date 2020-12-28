@@ -53,13 +53,13 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
         }
 
 
-//        btn_listGoBack.setOnClickListener(){
-//            info("Go Back")
-//            var i = Intent(context, FantasyFootballActivity::class.java)
-//
-//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(i)
-//        }
+        btn_listGoBack.setOnClickListener(){
+            info("Go Back")
+            var i = Intent(context, FantasyFootballActivity::class.java)
+
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
+        }
 
 
     }

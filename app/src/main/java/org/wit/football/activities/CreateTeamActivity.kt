@@ -46,7 +46,20 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
             i.putExtra("case", case)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
-
         }
+
+
+        btn_createGoBack.setOnClickListener(){
+            info("Go Back")
+            var i = Intent(context, FantasyFootballActivity::class.java)
+
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
+        }
+
+
+
     }
+
+
 }
