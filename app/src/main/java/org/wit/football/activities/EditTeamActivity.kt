@@ -77,12 +77,12 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
             context.startActivity(i)
         }
 
-        btn_editGoBack.setOnClickListener() {
-            info("Go Back")
-            var i = Intent(context, ListTeamsActivity::class.java)
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i)
-        }
+//        btn_editGoBack.setOnClickListener() {
+//            info("Go Back")
+//            var i = Intent(context, ListTeamsActivity::class.java)
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(i)
+//        }
 
     }
 

@@ -46,20 +46,20 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         val adapter = PlayerAdapter(this, playerList, team)
         recyclerView.adapter = adapter
 
-
-        btn_playersConfirmTeam.setOnClickListener(){
-            info("Confirmed Team Selection")
-            var teamselection = adapter.getNewSquad()
-
-            var i = Intent(context, EditTeamActivity::class.java)
-
-            val case: String = "PlayerList"
-            i.putExtra("case", case)
-            i.putExtra("myUpdatedPlayerList", teamselection )
-            i.putExtra("myTeam", team)
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i)
-        }
+//
+//        btn_playersConfirmTeam.setOnClickListener(){
+//            info("Confirmed Team Selection")
+//            var teamselection = adapter.getNewSquad()
+//
+//            var i = Intent(context, EditTeamActivity::class.java)
+//
+//            val case: String = "PlayerList"
+//            i.putExtra("case", case)
+//            i.putExtra("myUpdatedPlayerList", teamselection )
+//            i.putExtra("myTeam", team)
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(i)
+//        }
 
     }
 

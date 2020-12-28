@@ -4,6 +4,7 @@ import TeamJsonStore
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +25,12 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
     lateinit var TeamOperations: TeamJsonStore
     lateinit var app: FantasyFootballActivity
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_teams)
+//        setSupportActionBar(findViewById(R.id.my_toolbar))
+
 
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
@@ -49,13 +53,13 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
         }
 
 
-        btn_listGoBack.setOnClickListener(){
-            info("Go Back")
-            var i = Intent(context, FantasyFootballActivity::class.java)
-
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i)
-        }
+//        btn_listGoBack.setOnClickListener(){
+//            info("Go Back")
+//            var i = Intent(context, FantasyFootballActivity::class.java)
+//
+//            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(i)
+//        }
 
 
     }

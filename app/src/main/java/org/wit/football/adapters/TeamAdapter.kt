@@ -38,7 +38,7 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : Recycl
             i.putExtra("case", case)
             mCtx.startActivity(i)
         }
-    } 
+    }
 
     override fun getItemCount(): Int {
         return teamList.size

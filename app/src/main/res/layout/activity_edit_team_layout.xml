@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDarkest"
     tools:context=".activities.EditTeamActivity">
 
 
@@ -16,25 +17,37 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/colorRed"
             android:fitsSystemWindows="true"
             app:elevation="0dip"
+
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             tools:ignore="MissingConstraints">
-
-
             <Button
-                android:id="@+id/btn_editGoBack"
+                android:id="@+id/btn_app_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorRed"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:stateListAnimator="@null"
-                android:text="@string/go_back"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:text="@string/app_title"
+                android:textColor="@color/colorGrey"
+                android:textSize="26sp" />
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_editGoBack"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:background="@color/colorRed"-->
+<!--                android:paddingTop="8dp"-->
+<!--                android:paddingBottom="8dp"-->
+<!--                android:stateListAnimator="@null"-->
+<!--                android:text="@string/go_back"-->
+<!--                android:textColor="@color/colorGrey"-->
+<!--                android:textSize="16sp" />-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <EditText
@@ -44,11 +57,12 @@
             android:layout_margin="8dp"
             android:autofillHints=""
             android:hint="@string/hint_teamName"
+            android:textColorHint="@color/colorGrey"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"
             android:padding="8dp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorGrey"
             android:textSize="14sp" />
 
         <Button
@@ -56,12 +70,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorDark"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:stateListAnimator="@null"
             android:text="@string/edit_team"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorGrey"
             android:textSize="16sp" />
 
 
@@ -70,12 +84,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorDark"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:stateListAnimator="@null"
             android:text="@string/delete_squad"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorGrey"
             android:textSize="16sp" />
 
         <Button
@@ -83,12 +97,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorDark"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:stateListAnimator="@null"
             android:text="@string/edit_squad"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorGrey"
             android:textSize="16sp" />
 
 

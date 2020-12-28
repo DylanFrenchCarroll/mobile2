@@ -14,6 +14,7 @@
         <activity
             android:name=".activities.ListPlayersActivity"
             android:label="@string/title_activity_list_players"
+            android:parentActivityName=".activities.FantasyFootballActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".activities.EditTeamActivity" />
         <!--
@@ -24,8 +25,8 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".activities.CreateTeamActivity" />
-        <activity android:name=".activities.ListTeamsActivity" />
+        <activity android:name=".activities.CreateTeamActivity" android:parentActivityName=".activities.FantasyFootballActivity" />
+        <activity android:name=".activities.ListTeamsActivity" android:parentActivityName=".activities.FantasyFootballActivity" />
         <activity android:name=".activities.FantasyFootballActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
