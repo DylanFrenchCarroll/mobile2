@@ -33,7 +33,7 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
         val inflater = LayoutInflater.from(mCtx)
-        val view: View = inflater.inflate(R.layout.card_player, null)
+        val view: View = inflater.inflate(R.layout.card_player, parent, false)
         return PlayerViewHolder(view)
 
     }

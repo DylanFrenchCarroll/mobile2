@@ -23,7 +23,7 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : Recycl
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
 
         val inflater = LayoutInflater.from(mCtx)
-        val view: View = inflater.inflate(R.layout.card_team, null)
+        val view: View = inflater.inflate(R.layout.card_team, parent, false)
         return TeamViewHolder(view)
     }
 

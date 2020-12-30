@@ -47,6 +47,10 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         recyclerView.adapter = adapter
 
 
+
+
+
+
         btn_playersGoBack.setOnClickListener(){
             info("Confirmed Team Selection")
             var teamselection = adapter.getNewSquad()

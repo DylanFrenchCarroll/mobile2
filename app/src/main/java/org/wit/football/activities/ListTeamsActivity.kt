@@ -47,7 +47,8 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
             empty.add(emptyTeam)
             val adapter = TeamAdapter(this, empty  )
             recyclerView.adapter = adapter
-        }else{
+        }
+        else{
             val adapter = TeamAdapter(this, teamList)
             recyclerView.adapter = adapter
         }
@@ -64,7 +65,8 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
 
     }
 
-
-
-
 }
+
+
+
+

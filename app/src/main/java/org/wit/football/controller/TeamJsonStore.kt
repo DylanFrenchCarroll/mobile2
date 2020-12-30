@@ -58,32 +58,23 @@ class TeamJsonStore : AnkoLogger {
 
     fun teamUpdateName(oldTeam: TeamModel, newTeamName: String) {
         var foundTeam = teamFindOne(oldTeam.id)
-
         if (foundTeam != null) {
-            teamDelete(oldTeam)
-            var newTeam = TeamModel(oldTeam.id, newTeamName, oldTeam.players)
-            teamCreate(newTeam)
+            oldTeam.name = newTeamName
         }
         teamSerialize()
     }
 
     fun teamUpdatePlayers(oldTeam: TeamModel, newTeamPlayers: ArrayList<PlayerModel>) {
         var foundTeam = teamFindOne(oldTeam.id)
-
         if (foundTeam != null) {
-            teamDelete(oldTeam)
-            var newTeam = TeamModel(oldTeam.id,  oldTeam.name, newTeamPlayers)
-            teamCreate(newTeam)
+            oldTeam.players = newTeamPlayers
         }
         teamSerialize()
     }
 
 
     fun teamDelete(team: TeamModel) {
-        info("DELETING team name: " + team.name + " and id: " + team.id)
         teams.remove(team)
-        info("Current Team List Here: " + teams)
-        info("WRITING TO JSON")
         teamSerialize()
     }
 

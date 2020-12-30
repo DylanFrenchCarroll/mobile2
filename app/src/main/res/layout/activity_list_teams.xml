@@ -31,7 +31,7 @@
                     android:layout_centerInParent="true"
                     android:background="@color/colorRed"
                     android:stateListAnimator="@null"
-                    android:text="@string/app_title"
+                    android:text="@string/your_team"
                     android:textColor="@color/colorGrey"
                     android:textSize="26sp" />
                 <Button
@@ -46,8 +46,11 @@
                     android:textColor="@color/colorGrey"
                     android:layout_marginTop="10dp"
                     android:textSize="16sp" />
+
             </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
 
     <androidx.recyclerview.widget.RecyclerView
