@@ -31,9 +31,11 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         setContentView(R.layout.activity_edit_team_layout)
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
-
+        info("HERREEEEEEEEEEEEEEEEEEE")
         //Receiving team and reading case to decide what to do
         val switchCase: String = intent.getSerializableExtra("case") as String
+
+
         val intentTeam: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
         team = intentTeam
         var textViewTeamName = findViewById(R.id.editTeamName) as TextView
@@ -45,14 +47,15 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
 
         //If coming from squad selection
         if (switchCase == "PlayerList") {
-            var updatedPlayers = intent.getSerializableExtra("myUpdatedPlayerList") as ArrayList<PlayerModel>
+            var updatedPlayers =
+                intent.getSerializableExtra("myUpdatedPlayerList") as ArrayList<PlayerModel>
             if (updatedPlayers != null) {
                 TeamOperations.teamUpdatePlayers(intentTeam, updatedPlayers)
                 team.players = updatedPlayers
             }
         }
 
-        //Set the player list to show
+//        Set the player list to show
         var recyclerView = findViewById(R.id.squadPlayerRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -65,22 +68,18 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
 
 
         btn_editTeamName.setOnClickListener() {
-            info("Change Name Pressed:")
+            info("correct update button")
             TeamOperations.teamUpdateName(intentTeam, textViewTeamName.text.toString())
         }
 
         btn_deleteSquad.setOnClickListener() {
-            info("Delete Button Pressed:")
-            if (intentTeam != null) {
-                TeamOperations.teamDelete(intentTeam)
-                var i = Intent(context, ListTeamsActivity::class.java)
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i)
-            }
+            TeamOperations.teamDelete(intentTeam)
+            var i = Intent(context, ListTeamsActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i)
         }
 
         btn_editSquad.setOnClickListener() {
-            info("Change Squad!")
             var team: TeamModel = intentTeam
             var i = Intent(context, ListPlayersActivity::class.java)
             i.putExtra("myTeam", team)
@@ -89,7 +88,6 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         }
 
         btn_editGoBack.setOnClickListener() {
-            info("Go Back")
             var i = Intent(context, ListTeamsActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)

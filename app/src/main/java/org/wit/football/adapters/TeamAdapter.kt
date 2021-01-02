@@ -1,5 +1,6 @@
 package org.wit.football.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.R
 import org.wit.football.activities.EditTeamActivity
+import org.wit.football.activities.ListTeamsActivity
 import org.wit.placemark.app.models.TeamModel
 import java.io.Serializable
 
@@ -29,14 +31,19 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : Recycl
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         val team: TeamModel = teamList[position]
+
         holder.textViewName.setText(team.name)
         holder.itemView.setOnClickListener {
+
             info("HERE" + team)
             var i = Intent(mCtx, EditTeamActivity::class.java)
             i.putExtra("myTeam", team)
             val case = "TeamList"
             i.putExtra("case", case)
+
             mCtx.startActivity(i)
+            (mCtx as Activity).finish()
+
         }
     }
 
