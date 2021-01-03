@@ -12,15 +12,28 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.R
 import org.wit.football.activities.EditTeamActivity
-import org.wit.football.activities.ListTeamsActivity
 import org.wit.placemark.app.models.TeamModel
 import java.io.Serializable
 
 
-class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), Serializable ,AnkoLogger {
+class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
+    RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), Serializable, AnkoLogger {
+
+
+
 
 
     private var teamList: List<TeamModel>
+
+    // Filter Class
+    fun runFilter(charText: String): List<TeamModel> {
+        var filteredList = teamList.filter { s -> s.name.contains(charText) }
+        if(filteredList.size==0 ){
+            filteredList = teamList
+        }
+        notifyDataSetChanged()
+        return filteredList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
 
@@ -50,7 +63,6 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) : Recycl
     override fun getItemCount(): Int {
         return teamList.size
     }
-
 
 
     inner class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
