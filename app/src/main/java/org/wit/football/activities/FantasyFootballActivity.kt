@@ -29,8 +29,7 @@ class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
         PlayerOperations.getPlayers()
 
         btnListTeamsMenu.setOnClickListener() {
-            info("DB PLAYER LISTTTTTTTTTTTTTTTTTTTTTT  HEREa!!!!!!!" +  PlayerOperations.playerFindAll())
-            startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
+               startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
         }
 
         btnCreateTeamMenu.setOnClickListener() {

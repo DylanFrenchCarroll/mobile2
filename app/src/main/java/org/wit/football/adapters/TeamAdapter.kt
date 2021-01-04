@@ -48,7 +48,7 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
         holder.textViewName.setText(team.name)
         holder.itemView.setOnClickListener {
 
-            info("HERE" + team)
+
             var i = Intent(mCtx, EditTeamActivity::class.java)
             i.putExtra("myTeam", team)
             val case = "TeamList"

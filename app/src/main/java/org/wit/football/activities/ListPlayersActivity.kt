@@ -33,9 +33,8 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_players)
         context = getApplicationContext();
-        PlayerOperations = PlayerJsonStore()
         playerList = intent.getSerializableExtra("playerList") as List<PlayerModel>
-        info("PLAYERLIST########### \n " + playerList)
+
         var recyclerView = findViewById(R.id.playerRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -44,16 +43,16 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         val intentTeam2: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
         var team: TeamModel = intentTeam2
 
+
         val adapter = PlayerAdapter(this, playerList, team)
         recyclerView.adapter = adapter
+
 
 
         btn_playersGoBack.setOnClickListener(){
             info("Confirmed Team Selection")
             var teamselection = adapter.getNewSquad()
-
             var i = Intent(context, EditTeamActivity::class.java)
-
             val case: String = "PlayerList"
             i.putExtra("case", case)
             i.putExtra("myUpdatedPlayerList", teamselection )

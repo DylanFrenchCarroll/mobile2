@@ -29,6 +29,20 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
 
     init {
         this.playerList = playerList //passed list as parameter
+
+
+        for (player1 in team.players) {
+            var name = player1.name as String
+
+            var foundPlayer = playerList.find { p -> p.name == name }
+            if (foundPlayer != null) {
+                playerList.find { p -> p.name == name }?.isSelected = true
+                foundPlayer.isSelected = true
+                squadList.add(foundPlayer)
+            }
+
+        }
+        info("SQUADDDDDDDDDDDDDD" + squadList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayerViewHolder {
@@ -42,23 +56,17 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
         val player: PlayerModel = playerList[position]
         holder.itemView.setBackgroundColor(Color.parseColor("#30475e"))
         holder.playerTextViewName.setText(player.name)
-
-
-         for (player1 in team.players){
-
-             var name = player1.name as String
-             if(PlayerOperations.playerFindOne(name) != null){
-                   //means player is here
-                   // find player in
-             }
-         };
-
-
+        if(player.isSelected == true){
+            holder.itemView.setBackgroundColor(Color.CYAN)
+        }
         holder.itemView.setOnClickListener {
-            info("Player Selected" + player)
-            player.setPlayerSelected(!player.isPlayerSelected());
-            if (player.isPlayerSelected()) {
-                info("SELECTED")
+//
+            //CLICKED ON SO CHANGING SELECTED BOOLEAN
+            var boolean: Boolean = player.isSelected
+            player.setPlayerSelected(!boolean);
+
+            //if selecting the player
+            if (player.isPlayerSelected() && squadList.size < 5) {
                 holder.itemView.setBackgroundColor(Color.CYAN)
                 squadList.add(player)
             } else {
@@ -78,9 +86,6 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
     }
 
 
-
-
-
     override fun getItemCount(): Int {
         return playerList.size
     }
@@ -88,8 +93,6 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
     fun getNewSquad(): ArrayList<PlayerModel> {
         return squadList
     }
-
-
 
 
 }

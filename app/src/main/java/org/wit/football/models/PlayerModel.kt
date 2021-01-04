@@ -18,7 +18,7 @@ data class PlayerModel(
 
 
     override fun toString(): String {
-        return "Player: \n Name:'$name' \n Age:$age \n Team:'$team"
+        return "\n Player: \n Name:'$name' \n Age:$age \n Team:$team \n isSelected:$isSelected"
     }
 
     fun setPlayerSelected(selected: Boolean) {
