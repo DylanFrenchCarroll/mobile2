@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.CreateTeamActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,8 +26,6 @@
                 android:layout_height="70dp"
                 android:orientation="horizontal">
 
-
-
                 <Button
                     android:id="@+id/btn_app_title"
                     android:layout_width="312dp"
@@ -39,24 +36,22 @@
                     android:text="@string/app_title"
                     android:textColor="@color/colorGrey"
                     android:textSize="26sp" />
+
                 <Button
                     android:id="@+id/btn_createGoBack"
-                    android:drawableLeft="@drawable/left"
-                    android:drawableTint="@color/colorGrey"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@color/colorRed"
                     android:baselineAligned="false"
+                    android:drawableLeft="@drawable/left"
+                    android:drawableTint="@color/colorGrey"
                     android:stateListAnimator="@null"
                     android:textColor="@color/colorGrey"
-                    android:layout_marginTop="10dp"
                     android:textSize="16sp" />
             </RelativeLayout>
 
-
         </com.google.android.material.appbar.AppBarLayout>
-
-
 
 
         <EditText
@@ -65,15 +60,15 @@
             android:layout_height="45dp"
             android:layout_margin="8dp"
             android:autofillHints=""
+            android:background="@color/colorDark"
             android:hint="@string/hint_teamName"
-            android:textColorHint="@color/colorGrey"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"
             android:padding="8dp"
 
-            android:background="@color/colorDark"
             android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
             android:textSize="14sp" />
 
         <Button

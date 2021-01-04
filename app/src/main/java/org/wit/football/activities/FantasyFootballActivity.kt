@@ -25,16 +25,14 @@ class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fantasy)
 
-        //getting players for good
         PlayerOperations.getPlayers()
 
         btnListTeamsMenu.setOnClickListener() {
-               startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
+            startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
         }
 
         btnCreateTeamMenu.setOnClickListener() {
             startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
         }
     }
-
 }

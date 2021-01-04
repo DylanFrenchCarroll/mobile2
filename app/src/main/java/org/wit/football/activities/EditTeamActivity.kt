@@ -32,63 +32,44 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
 
-
-        //get list of players and pass them on to next activity
         var PlayerOperations = PlayerJsonStore()
         var playersList = PlayerOperations.playerFindAll()
-
-
-
-
-        //Receiving team and reading case to decide what to do
         val switchCase: String = intent.getSerializableExtra("case") as String
-
-
-        val intentTeam: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
-        team = intentTeam
+        team = intent.getSerializableExtra("myTeam") as TeamModel
         var textViewTeamName = findViewById(R.id.editTeamName) as TextView
 
-        //Setting Name on Screen
-        if (intentTeam != null) {
-            textViewTeamName.setText(intentTeam.name)
+        if (team != null) {
+            textViewTeamName.setText(team.name)
         }
 
-        //If coming from squad selection
         if (switchCase == "PlayerList") {
             var updatedPlayers =
                 intent.getSerializableExtra("myUpdatedPlayerList") as ArrayList<PlayerModel>
             if (updatedPlayers != null) {
-                TeamOperations.teamUpdatePlayers(intentTeam, updatedPlayers)
+                TeamOperations.teamUpdatePlayers(team, updatedPlayers)
                 team.players = updatedPlayers
             }
         }
 
-//        Set the player list to show
         var recyclerView = findViewById(R.id.squadPlayerRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        //Using the adapter to display the list of players from the squad
         val thisAdapter = PlayerAdapter(this, team.players, team)
         recyclerView.adapter = thisAdapter
 
 
-
-
         btn_editTeamName.setOnClickListener() {
-            info("correct update button")
-            TeamOperations.teamUpdateName(intentTeam, textViewTeamName.text.toString())
+            TeamOperations.teamUpdateName(team, textViewTeamName.text.toString())
         }
 
         btn_deleteSquad.setOnClickListener() {
-            TeamOperations.teamDelete(intentTeam)
+            TeamOperations.teamDelete(team)
             var i = Intent(context, ListTeamsActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
         }
 
         btn_editSquad.setOnClickListener() {
-            var team: TeamModel = intentTeam
             var i = Intent(context, ListPlayersActivity::class.java)
             i.putExtra("myTeam", team)
             i.putExtra("playerList", playersList)
@@ -101,8 +82,5 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
         }
-
     }
-
-
 }

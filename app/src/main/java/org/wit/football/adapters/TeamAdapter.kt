@@ -19,16 +19,11 @@ import java.io.Serializable
 class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
     RecyclerView.Adapter<TeamAdapter.TeamViewHolder?>(), Serializable, AnkoLogger {
 
-
-
-
-
     private var teamList: List<TeamModel>
 
-    // Filter Class
     fun runFilter(charText: String): List<TeamModel> {
         var filteredList = teamList.filter { s -> s.name.contains(charText) }
-        if(filteredList.size==0 ){
+        if (filteredList.size == 0) {
             filteredList = teamList
         }
         notifyDataSetChanged()
@@ -36,7 +31,6 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamViewHolder {
-
         val inflater = LayoutInflater.from(mCtx)
         val view: View = inflater.inflate(R.layout.card_team, parent, false)
         return TeamViewHolder(view)
@@ -44,16 +38,12 @@ class TeamAdapter(private val mCtx: Context, teamList: List<TeamModel>) :
 
     override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         val team: TeamModel = teamList[position]
-
         holder.textViewName.setText(team.name)
         holder.itemView.setOnClickListener {
-
-
             var i = Intent(mCtx, EditTeamActivity::class.java)
             i.putExtra("myTeam", team)
             val case = "TeamList"
             i.putExtra("case", case)
-
             mCtx.startActivity(i)
             (mCtx as Activity).finish()
 

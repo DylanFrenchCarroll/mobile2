@@ -14,9 +14,6 @@ data class PlayerModel(
     var isSelected: Boolean = false
 ) : Serializable {
 
-
-
-
     override fun toString(): String {
         return "\n Player: \n Name:'$name' \n Age:$age \n Team:$team \n isSelected:$isSelected"
     }

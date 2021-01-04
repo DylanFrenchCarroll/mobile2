@@ -25,7 +25,6 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
 
     lateinit var playerList: List<PlayerModel>
     lateinit var context: Context
-    lateinit var PlayerOperations: PlayerJsonStore
     lateinit var app: FantasyFootballActivity
 
 
@@ -39,22 +38,14 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        //Getting Team from intent
-        val intentTeam2: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
-        var team: TeamModel = intentTeam2
-
-
+        var team: TeamModel = intent.getSerializableExtra("myTeam") as TeamModel
         val adapter = PlayerAdapter(this, playerList, team)
         recyclerView.adapter = adapter
 
-
-
         btn_playersGoBack.setOnClickListener(){
-            info("Confirmed Team Selection")
             var teamselection = adapter.getNewSquad()
             var i = Intent(context, EditTeamActivity::class.java)
-            val case: String = "PlayerList"
-            i.putExtra("case", case)
+            i.putExtra("case", "PlayerList")
             i.putExtra("myUpdatedPlayerList", teamselection )
             i.putExtra("myTeam", team)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

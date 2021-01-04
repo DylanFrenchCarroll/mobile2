@@ -9,7 +9,7 @@
     tools:context=".activities.ListTeamsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id = "@+id/my_toolbar"
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorRed"
@@ -18,44 +18,37 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:orientation="horizontal">
-
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
 
             <SearchView
                 android:id="@+id/search"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:iconifiedByDefault="false">
+
                 <requestFocus />
             </SearchView>
 
+            <Button
+                android:id="@+id/btn_listGoBack"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorRed"
+                android:baselineAligned="false"
+                android:drawableLeft="@drawable/left"
+                android:drawableTint="@color/colorGrey"
+                android:stateListAnimator="@null"
+                android:textColor="@color/colorGrey"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/btn_listGoBack"
-                    android:drawableLeft="@drawable/left"
-                    android:drawableTint="@color/colorGrey"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorRed"
-                    android:baselineAligned="false"
-                    android:stateListAnimator="@null"
-                    android:textColor="@color/colorGrey"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp" />
-
-
-
-            </RelativeLayout>
+        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -64,7 +57,6 @@
         android:background="@color/colorDarkest"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -33,9 +33,6 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_teams)
-//        setSupportActionBar(findViewById(R.id.my_toolbar))
-
-
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
         teamList = TeamOperations.teamFindAll()
@@ -45,27 +42,20 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
-
-
-
         var editsearch = findViewById(R.id.search) as SearchView
         editsearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 filteredList = adapter.runFilter(query)
-
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
                 var text: String = newText;
-                if(text.length == 0 ){
+                if (text.length == 0) {
                     filteredList = teamList
-                }else{
+                } else {
                     filteredList = adapter.runFilter(text)
-                    info("################FILTERED LIST####################"+ "\n" + filteredList)
-
                 }
-
                 adapter = TeamAdapter(context, filteredList)
                 recyclerView.adapter = adapter
                 return false;
@@ -73,27 +63,22 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
         })
 
         if (teamList.size == 0) {
-            var emptyPlayerList: ArrayList<PlayerModel> = ArrayList()
             val emptyTeam = TeamModel(
                 0,
                 "No Squads Available(Please dont click me, I'm a bug)",
-                emptyPlayerList
+                ArrayList<PlayerModel>()
             )
             val empty = mutableListOf<TeamModel>()
             empty.add(emptyTeam)
             adapter = TeamAdapter(this, empty)
             recyclerView.adapter = adapter
-        }
-        else {
+        } else {
             adapter = TeamAdapter(this, filteredList)
             recyclerView.adapter = adapter
         }
 
 
-
-
         btn_listGoBack.setOnClickListener() {
-            info("Go Back")
             var i = Intent(context, FantasyFootballActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)

@@ -13,7 +13,6 @@ var TEAM_JSON_FILE = "teams.json"
 var teamGsonBuilder = GsonBuilder().setPrettyPrinting().create()
 var teamListType = object : TypeToken<java.util.ArrayList<TeamModel>>() {}.type
 
-
 class TeamJsonStore : AnkoLogger {
 
     var teams = mutableListOf<TeamModel>()

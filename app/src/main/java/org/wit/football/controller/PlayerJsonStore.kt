@@ -1,27 +1,12 @@
-import android.content.Context
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.football.models.PlayerModel
-import java.util.*
 import kotlin.collections.ArrayList
-
-
-var PLAYER_JSON_FILE = "players.json"
-var playerGsonBuilder = GsonBuilder().setPrettyPrinting().create()
-var playerListType = object : TypeToken<java.util.ArrayList<PlayerModel>>() {}.type
-
-fun playerGenerateRandomId(): Int {
-    return Random().nextInt()
-}
 
 class PlayerJsonStore : AnkoLogger {
 
     var players = ArrayList<PlayerModel>()
-
 
     fun getPlayers() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -46,12 +31,4 @@ class PlayerJsonStore : AnkoLogger {
         getPlayers()
         return players
     }
-
-    fun playerFindOne(name: String): PlayerModel? {
-        var foundPlayer = players.find { p -> p.name == name }
-        if (foundPlayer != null) {
-            return foundPlayer
-        } else return null
-    }
-
 }
