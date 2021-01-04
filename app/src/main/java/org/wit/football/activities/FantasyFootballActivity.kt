@@ -19,42 +19,23 @@ import org.wit.placemark.app.models.TeamModel
 class FantasyFootballActivity : AppCompatActivity(), AnkoLogger {
 
     lateinit var team: TeamModel
-
+    var PlayerOperations: PlayerJsonStore = PlayerJsonStore()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fantasy)
-        var context: Context = getApplicationContext();
 
-        if (!exists(context, "players.json")) {
-            var PlayerOperations: PlayerJsonStore = PlayerJsonStore(context)
-            PlayerOperations.playerCreateDB()
-        }
-
-
-
-        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        info("DB HERE: #############: " + db)
-        db.collection("players").get().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                for (document in task.result!!) {
-                    info(document.id + " => " + document.data)
-                }
-            } else {
-                info("Error getting documents.", task.exception)
-            }
-        }
-        info("FUCKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKing work")
-
+        //getting players for good
+        PlayerOperations.getPlayers()
 
         btnListTeamsMenu.setOnClickListener() {
+            info("DB PLAYER LISTTTTTTTTTTTTTTTTTTTTTT  HEREa!!!!!!!" +  PlayerOperations.playerFindAll())
             startActivity(Intent(this@FantasyFootballActivity, ListTeamsActivity::class.java))
         }
 
         btnCreateTeamMenu.setOnClickListener() {
             startActivity(Intent(this@FantasyFootballActivity, CreateTeamActivity::class.java))
         }
-
     }
 
 }

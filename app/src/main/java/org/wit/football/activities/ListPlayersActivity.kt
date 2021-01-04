@@ -33,8 +33,9 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_players)
         context = getApplicationContext();
-        PlayerOperations = PlayerJsonStore(context)
-        playerList = PlayerOperations.playerFindAll()
+        PlayerOperations = PlayerJsonStore()
+        playerList = intent.getSerializableExtra("playerList") as List<PlayerModel>
+        info("PLAYERLIST########### \n " + playerList)
         var recyclerView = findViewById(R.id.playerRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)

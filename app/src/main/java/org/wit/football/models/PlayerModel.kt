@@ -2,6 +2,9 @@ package org.wit.football.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.firebase.firestore.FirebaseFirestore
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import java.io.Serializable
 
 data class PlayerModel(
@@ -10,6 +13,8 @@ data class PlayerModel(
     var team: String?,
     var isSelected: Boolean = false
 ) : Serializable {
+
+
 
 
     override fun toString(): String {

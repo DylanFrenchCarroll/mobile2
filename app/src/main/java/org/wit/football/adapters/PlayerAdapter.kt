@@ -20,7 +20,7 @@ import java.io.Serializable
 class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, team: TeamModel) :
     RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder?>(), Serializable, AnkoLogger {
 
-    var PlayerOperations = PlayerJsonStore(mCtx)
+    var PlayerOperations = PlayerJsonStore()
     var TeamOperations = TeamJsonStore(mCtx)
     private var playerList: List<PlayerModel>
     var team = team

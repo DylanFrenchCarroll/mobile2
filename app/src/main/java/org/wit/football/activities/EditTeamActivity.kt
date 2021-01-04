@@ -1,5 +1,6 @@
 package org.wit.football.activities
 
+import PlayerJsonStore
 import TeamJsonStore
 import android.content.Context
 import android.content.Intent
@@ -22,7 +23,6 @@ import java.util.ArrayList
 class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
 
     lateinit var TeamOperations: TeamJsonStore
-    lateinit var playerList: List<PlayerModel>
     lateinit var team: TeamModel;
     lateinit var context: Context
 
@@ -31,7 +31,15 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         setContentView(R.layout.activity_edit_team_layout)
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
-        info("HERREEEEEEEEEEEEEEEEEEE")
+
+
+        //get list of players and pass them on to next activity
+        var PlayerOperations = PlayerJsonStore()
+        var playersList = PlayerOperations.playerFindAll()
+
+
+
+
         //Receiving team and reading case to decide what to do
         val switchCase: String = intent.getSerializableExtra("case") as String
 
@@ -83,6 +91,7 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
             var team: TeamModel = intentTeam
             var i = Intent(context, ListPlayersActivity::class.java)
             i.putExtra("myTeam", team)
+            i.putExtra("playerList", playersList)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
         }
