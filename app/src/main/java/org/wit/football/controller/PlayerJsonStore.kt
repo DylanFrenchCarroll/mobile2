@@ -8,6 +8,7 @@ class PlayerJsonStore : AnkoLogger {
 
     var players = ArrayList<PlayerModel>()
 
+    //Gets a list of players from Firestore
     fun getPlayers() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
         db.collection("players").get().addOnCompleteListener { task ->
@@ -27,6 +28,7 @@ class PlayerJsonStore : AnkoLogger {
     }
 
 
+    //Returns the player List
     fun playerFindAll(): ArrayList<PlayerModel> {
         getPlayers()
         return players

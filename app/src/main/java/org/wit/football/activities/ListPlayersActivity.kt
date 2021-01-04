@@ -42,6 +42,7 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
         val adapter = PlayerAdapter(this, playerList, team)
         recyclerView.adapter = adapter
 
+        //to confirm team press back
         btn_playersGoBack.setOnClickListener(){
             var teamselection = adapter.getNewSquad()
             var i = Intent(context, EditTeamActivity::class.java)
@@ -51,7 +52,6 @@ class ListPlayersActivity : AppCompatActivity(), Serializable, AnkoLogger {
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i)
         }
-
     }
 
 

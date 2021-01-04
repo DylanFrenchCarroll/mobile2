@@ -22,6 +22,8 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
         val TeamOperations = TeamJsonStore(context)
         var team = TeamModel(TeamOperations.teamGenerateRandomId(),"EmptyName", players)
 
+
+        //Create button grabbing team name
         btn_createATeam.setOnClickListener() {
             team.name = teamName.text.toString()
             TeamOperations.teamCreate(team)
@@ -32,7 +34,7 @@ class CreateTeamActivity : AppCompatActivity(), AnkoLogger {
             context.startActivity(i)
         }
 
-
+        //Back button in all classes
         btn_createGoBack.setOnClickListener(){
             var i = Intent(context, FantasyFootballActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

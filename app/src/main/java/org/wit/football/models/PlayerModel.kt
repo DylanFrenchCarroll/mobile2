@@ -26,6 +26,5 @@ data class PlayerModel(
         return isSelected
     }
 
-
 }
 

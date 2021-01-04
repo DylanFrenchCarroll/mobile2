@@ -44,6 +44,7 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
 
         var editsearch = findViewById(R.id.search) as SearchView
         editsearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String): Boolean {
                 filteredList = adapter.runFilter(query)
                 return false
@@ -62,6 +63,8 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
             }
         })
 
+        //If there are no squads to be shown do this
+        //show new list with no teams or show list of teams
         if (teamList.size == 0) {
             val emptyTeam = TeamModel(
                 0,
@@ -77,7 +80,7 @@ class ListTeamsActivity : AppCompatActivity(), Serializable, AnkoLogger {
             recyclerView.adapter = adapter
         }
 
-
+        //back button
         btn_listGoBack.setOnClickListener() {
             var i = Intent(context, FantasyFootballActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

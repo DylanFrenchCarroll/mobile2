@@ -51,6 +51,8 @@ class PlayerAdapter(private val mCtx: Context, playerList: List<PlayerModel>, te
         if (player.isSelected == true) {
             holder.itemView.setBackgroundColor(Color.CYAN)
         }
+
+
         holder.itemView.setOnClickListener {
             var boolean: Boolean = player.isSelected
             player.setPlayerSelected(!boolean);

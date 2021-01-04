@@ -31,17 +31,19 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         setContentView(R.layout.activity_edit_team_layout)
         context = getApplicationContext();
         TeamOperations = TeamJsonStore(context)
-
         var PlayerOperations = PlayerJsonStore()
         var playersList = PlayerOperations.playerFindAll()
+
+        //Dealing with team passed through the intent
         val switchCase: String = intent.getSerializableExtra("case") as String
         team = intent.getSerializableExtra("myTeam") as TeamModel
-        var textViewTeamName = findViewById(R.id.editTeamName) as TextView
 
+        var textViewTeamName = findViewById(R.id.editTeamName) as TextView
         if (team != null) {
             textViewTeamName.setText(team.name)
         }
 
+        //Coming from the squad selection part here
         if (switchCase == "PlayerList") {
             var updatedPlayers =
                 intent.getSerializableExtra("myUpdatedPlayerList") as ArrayList<PlayerModel>
@@ -51,6 +53,7 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
             }
         }
 
+        // Recycler view set up
         var recyclerView = findViewById(R.id.squadPlayerRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -58,6 +61,7 @@ class EditTeamActivity : AppCompatActivity(), AnkoLogger, Serializable {
         recyclerView.adapter = thisAdapter
 
 
+        //Various buttons to do tasks either change name, or move to another page
         btn_editTeamName.setOnClickListener() {
             TeamOperations.teamUpdateName(team, textViewTeamName.text.toString())
         }
