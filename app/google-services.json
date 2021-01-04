@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "317919861215",
+    "firebase_url": "https://dbmobil2-fb606-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "dbmobil2-fb606",
+    "storage_bucket": "dbmobil2-fb606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317919861215:android:33780ea2245227c5aa8c6a",
+        "android_client_info": {
+          "package_name": "org.wit.football"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317919861215-ru3o3r96u111e0ginq9b2h2le2tg9g2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqfUPo6jvT9rk7Etr2jmP77rWUN1Q_rEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317919861215-ru3o3r96u111e0ginq9b2h2le2tg9g2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
